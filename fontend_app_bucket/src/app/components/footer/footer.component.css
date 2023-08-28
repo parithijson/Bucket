@@ -1,0 +1,14 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+.footer {
+  padding: 5rem;
+  background-color: #f0f5f9;
+}
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-direction: column;
+}

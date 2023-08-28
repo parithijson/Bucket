@@ -1,0 +1,129 @@
+<app-header></app-header>
+
+<div class="main">
+  <div class="project-title">
+    <p class="projectTitle">{{post.projectTitle}}</p>
+  </div>
+  <div class="primary-image">
+    <img src={{post.media[0].mediaURL}} class="img-fluid rounded" width="150%">
+  </div>
+  <p class="projectDes">
+    {{post.projectDescription}}
+  </p>
+  <div class="container-fluid img-row">
+
+
+    <div class="row">
+
+      <div *ngFor="let url of post.media;let i=index" class="col-sm-6 col-lg-5 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="image-container">
+            <img class="card-img-top" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal'+i"
+              src={{url.mediaURL}} alt="...">
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- Modal -->
+  <div *ngFor="let url of post.media;let i=index" class="modal fade" id="{{'exampleModal' + i}}" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <img class="card-img-zoom" src={{url.mediaURL}} alt="..." width="100%">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <hr>
+
+  <div class="info">
+    <div class="row">
+
+      <div class="col-lg-8  comments">
+
+        <p class="comment-heading">Comments</p>
+        <form [formGroup]="commentContent" (ngSubmit)="commentPost()">
+          <div class="input-comment">
+            <input type="text" formControlName="content" placeholder="drop your comment here !">
+            <button type="submit" class="btn btn-primary">drop comment</button>
+          </div>
+        </form>
+
+
+        <div class="comment" *ngFor="let com of post.comments">
+          <!-- <img class="user dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" width="40px"
+            src="data:image/jpeg;base64,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"
+            alt=""> -->
+
+          <div class="comment-content">
+            <p>{{com.commentedUsername}} <span>{{com.commentedTime | date}}</span></p>
+            <p class="content">{{com.commentContent}}</p>
+          </div>
+
+        </div>
+
+
+      </div>
+      <div class="col detail-row">
+        <div class="details">
+
+          <div class="detail-info">
+            <div class="userInfo">
+              <div class="user-img">
+
+                <img class="user dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                  width="40px" src="https://img.freepik.com/free-icon/user_318-159711.jpg?w=2000" alt="">
+              </div>
+              <div class="user-text">
+                <p>{{post.username}}</p>
+                <p class="email">{{post.userEmail}}</p>
+
+              </div>
+            </div>
+            <div class="likecount">
+              <p><fa-icon class="fa fa-filter form-control-feedback" [icon]="hearIcon"
+                  (click)="toggleIcon()"></fa-icon>{{post.likeCount}}</p>
+            </div>
+
+          </div>
+          <div class="post-info">
+            <p>{{post.projectTitle}}</p>
+            <p class="email">dropped on : {{post.projectCreatedAt | date}} </p>
+
+          </div>
+        </div>
+
+        <div class="details">
+
+          <button *ngFor="let tag of post.tags" class="btn btn-secondary  btn-filter " type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{tag}}
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+<app-footer></app-footer>

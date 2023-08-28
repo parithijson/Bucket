@@ -1,0 +1,18 @@
+<!-- hero section -->
+
+<div class="container-fluid">
+  <h1 class="text-center">Fetch from <span>bucket</span></h1>
+
+  <form class="container-fluid row justify-content-center search">
+    <div class="form-group col-11 col-lg-4 col-md-6 col-sm-6 d-flex align-items-center has-search">
+
+
+      <fa-icon class="fa fa-search form-control-feedback" [icon]="searchIcon"></fa-icon>
+
+      <input type="text" (change)="onInputChange($event)" class="form-control" placeholder="Search for some drops">
+    </div>
+
+  </form>
+
+
+</div>

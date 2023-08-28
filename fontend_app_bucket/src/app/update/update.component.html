@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<div class="container">
+  <h1 class="page-title">Update Your Project</h1>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="projectTitle">Project Title</label>
+      <input type="text" id="projectTitle" formControlName="projectTitle" required>
+    </div>
+    <div class="form-group">
+      <label for="projectImages">Project Images</label>
+
+      <ngx-dropzone (change)="onSelect($event)">
+        <ngx-dropzone-label>
+          <span>
+            <fa-icon class="fa fa-filter form-control-feedback" [icon]="dropIcon"></fa-icon>
+
+          </span>
+          <p>drag & drop here</p>
+        </ngx-dropzone-label>
+        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+          <ngx-dropzone-label>
+            {{f.name}} {{f.type}}
+          </ngx-dropzone-label>
+        </ngx-dropzone-preview>
+      </ngx-dropzone>
+
+
+      <div class="hint">You can upload up to 4 images.</div>
+    </div>
+    <div class="form-group">
+      <label for="projectDescription">Project Description</label>
+      <textarea id="projectDescription" rows="4" formControlName="projectDescription" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="projectTags">Project Tags</label>
+      <input type="text" id="projectTags" formControlName="projectTags" required>
+      <div class="hint">Separate tags with commas.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a (click)="delete()" style="background-color: rgb(252, 52, 52);" type="submit" class="btn btn-primary ">Delete</a>
+  </form>
+</div>
+
+<app-footer></app-footer>
+
+<!-- <input type="file" id="projectImages" accept="image/*" multiple> -->

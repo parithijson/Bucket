@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container">
+  <div class="profile-header">
+    <img src="https://img.freepik.com/free-icon/user_318-159711.jpg?w=2000" alt="Profile Image" class="profile-image">
+    <div class="profile-name">ParithiS</div>
+    <div class="profile-bio">Desingner | Gamer</div>
+    <button class="hire-button">Hire Me</button>
+  </div>
+</div>
+
+
+
+<div class="filter  container-fluid">
+  <h2 style="font-weight: 600;">My Drops</h2>
+
+  <!-- post section -->
+
+  <!-- getPostByUserID -->
+
+  <div class="post">
+    <div class="row">
+
+      <div *ngFor="let post of PostList" class="col-sm-6 col-lg-3 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="image-container">
+            <img class="card-img-top" [src]="post.mediaURL" alt="...">
+            <a [routerLink]="['project',post.projectID]">
+              <div class=" text-overlay">
+                {{ post.projectTitle }}
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+
+            <a href="">
+              {{ post.userName }}
+            </a>
+            <!-- <p style="cursor: pointer;" (click)="delete()"><fa-icon class="fa fa-filter form-control-feedback"
+                [icon]="recycleIcon"></fa-icon>
+            </p> -->
+            <p style="cursor: pointer;" (click)="toUpdate(post.projectID)"><fa-icon
+                class="fa fa-filter form-control-feedback" [icon]="editIcon"></fa-icon>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <hr>
+</div>
+
+
+<app-footer></app-footer>

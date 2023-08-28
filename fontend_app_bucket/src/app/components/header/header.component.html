@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-md ">
+  <div class="container-fluid">
+    <a class="navbar-brand d-md-none" draggable="false" ondragstart="return false;" href="#">
+      <img draggable="false" [src]="imgSrc" width="150" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item mx-auto" *ngIf=" ( userSuccess == null);else userpfp">
+          <a class="nav-link" style="cursor: pointer;" (click)="toLogin()">Login</a>
+        </li>
+        <li class="nav-item mx-auto" *ngIf="(userSuccess == null );else signupvis">
+          <a (click)="toRegister()" style="cursor: pointer;" class="nav-link">Sign up</a>
+        </li>
+
+        <ng-template #signupvis>
+          <li (click)="toDrop()" class="nav-item mx-auto">
+            <button class="btn btn-secondary  btn-filter " type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <fa-icon class="fa fa-filter form-control-feedback" [icon]="dropIcon"></fa-icon>
+
+              drop
+            </button>
+          </li>
+
+
+        </ng-template>
+
+        <ng-template #userpfp>
+          <li class="nav-item mx-auto">
+
+            <div class="dropdown-center">
+
+              <img class="user dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                width="40px" src="https://img.freepik.com/free-icon/user_318-159711.jpg?w=2000" alt="">
+
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" (click)="toSettings()">Settings<fa-icon
+                      class="fa fa-filter form-control-feedback" [icon]="settingsIcon"></fa-icon>
+                  </a></li>
+                <li><a class="dropdown-item" (click)="logOut()">Log out <fa-icon
+                      class="fa fa-filter form-control-feedback" [icon]="logoutIcon"></fa-icon></a>
+                <li>
+              </ul>
+            </div>
+          </li>
+        </ng-template>
+
+
+
+        <a class="navbar-brand d-none text-center d-md-block" href="#">
+          <img draggable="false" [src]="imgSrc" width="150" alt="">
+        </a>
+        <li class="nav-item mx-auto">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item mx-auto">
+          <a href="#" class="nav-link">Know us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
